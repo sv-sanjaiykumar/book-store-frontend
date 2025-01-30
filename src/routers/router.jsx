@@ -5,8 +5,6 @@ import {
 import App from "../App.jsx";
 import Home from "../home/Home.jsx";
 import Shop from "../shop/Shop.jsx";
-import About from "../components/About.jsx";
-import Blog from "../components/Blog.jsx";
 import SingleBook from "../shop/SingleBook.jsx";
 import DashboardLayout from "../dashboard/DashboardLayout.jsx";
 import Dashboard from "../dashboard/Dashboard.jsx";
@@ -30,14 +28,6 @@ import Logout from "../components/Logout.jsx";
         {
             path: "/shop",
             element: <Shop />,
-        },
-        {
-            path: "/about",
-            element: <About/>,
-        },
-        {
-            path: "/blog",
-            element: <Blog/>,
         },
         {
           path: "/book/:id",
