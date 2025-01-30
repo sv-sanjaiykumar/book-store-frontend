@@ -5,12 +5,10 @@ import {
 import App from "../App.jsx";
 import Home from "../home/Home.jsx";
 import Shop from "../shop/Shop.jsx";
-import About from "../components/About.jsx";
-import Blog from "../components/Blog.jsx";
 import SingleBook from "../shop/SingleBook.jsx";
 import DashboardLayout from "../dashboard/DashboardLayout.jsx";
 import Dashboard from "../dashboard/Dashboard.jsx";
-import Uploadbook from "../dashboard/Uploadbook.jsx";
+import Uploadbook from "../dashboard/UploadBook.jsx";
 import ManageBooks from "../dashboard/ManageBooks.jsx";
 import EditBooks from "../dashboard/EditBooks.jsx";
 import Signup from "../components/Signup.jsx";
@@ -32,17 +30,9 @@ import Logout from "../components/Logout.jsx";
             element: <Shop />,
         },
         {
-            path: "/about",
-            element: <About/>,
-        },
-        {
-            path: "/blog",
-            element: <Blog/>,
-        },
-        {
           path: "/book/:id",
           element: <SingleBook/>,
-          loader: ({params}) => fetch(`http://localhost:5000/book/${params.id}`),
+          loader: ({params}) => fetch(`https://book-store-backend-2-rlxg.onrender.com/book/${params.id}`),
         }
       ]
     },
@@ -65,7 +55,7 @@ import Logout from "../components/Logout.jsx";
         {
           path: "/admin/dashboard/edit-book/:id",
           element: <EditBooks/>,
-          loader: ({params}) => fetch(`http://localhost:5000/book/${params.id}`),
+          loader: ({params}) => fetch(`https://book-store-backend-2-rlxg.onrender.com/book/${params.id}`),
         }
       ]
     },

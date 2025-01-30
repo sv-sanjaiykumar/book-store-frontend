@@ -5,13 +5,13 @@ const ManageBooks = () => {
   const [allBooks, setAllBooks] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/all-books").then(res => res.json()).then(data => setAllBooks(data)).catch(err => console.error("Error fetching books:", err));
+    fetch("https://book-store-backend-2-rlxg.onrender.com/all-books").then(res => res.json()).then(data => setAllBooks(data)).catch(err => console.error("Error fetching books:", err));
   }, []);
 
   //delete a book
   const handleDelete = (id) =>{
     console.log(id);
-    fetch(`http://localhost:5000/book/${id}`,{method:"DELETE"}).then(res => res.json()).then(data => {
+    fetch(`https://book-store-backend-2-rlxg.onrender.com/book/${id}`,{method:"DELETE"}).then(res => res.json()).then(data => {
       alert("Book is deleted successfully");
       // setAllBooks(data);
     })

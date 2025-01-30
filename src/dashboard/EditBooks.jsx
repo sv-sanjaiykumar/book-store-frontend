@@ -31,7 +31,7 @@ const EditBooks = () => {
       bookPDFURL,
     };
 
-    fetch(`http://localhost:5000/book/${id}`, {
+    fetch(`https://book-store-backend-2-rlxg.onrender.com/book/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
