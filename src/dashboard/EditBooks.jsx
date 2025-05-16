@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 
 const EditBooks = () => {
@@ -31,7 +31,7 @@ const EditBooks = () => {
       bookPDFURL,
     };
 
-    fetch(`https://book-store-backend-2-rlxg.onrender.com/book/${id}`, {
+    fetch(`http://localhost:5000/book/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

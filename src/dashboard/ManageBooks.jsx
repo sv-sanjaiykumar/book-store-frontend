@@ -5,17 +5,24 @@ const ManageBooks = () => {
   const [allBooks, setAllBooks] = useState([]);
 
   useEffect(() => {
-    fetch("https://book-store-backend-2-rlxg.onrender.com/all-books").then(res => res.json()).then(data => setAllBooks(data)).catch(err => console.error("Error fetching books:", err));
+    fetch("http://localhost:5000/all-books")
+      .then(res => res.json())
+      .then(data => setAllBooks(data))
+      .catch(err => console.error("Error fetching books:", err));
   }, []);
 
-  //delete a book
-  const handleDelete = (id) =>{
-    console.log(id);
-    fetch(`https://book-store-backend-2-rlxg.onrender.com/book/${id}`,{method:"DELETE"}).then(res => res.json()).then(data => {
-      alert("Book is deleted successfully");
-      // setAllBooks(data);
+  // Delete a book
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/book/${id}`, {
+      method: "DELETE"
     })
-  }
+      .then(res => res.json())
+      .then(data => {
+        alert("Book is deleted successfully");
+        // Remove deleted book from state
+        setAllBooks(prevBooks => prevBooks.filter(book => book._id !== id));
+      });
+  };
 
   return (
     <div className="px-4 my-12">
@@ -39,11 +46,11 @@ const ManageBooks = () => {
             {allBooks.length > 0 ? (
               allBooks.map((book, index) => (
                 <tr key={book._id} className="border-b">
-                  <td className="p-3">{index + 1}</td> {/* Serial Number */}
+                  <td className="p-3">{index + 1}</td>
                   <td className="p-3">{book.bookTitle}</td>
                   <td className="p-3">{book.authorName}</td>
                   <td className="p-3">{book.category}</td>
-                  <td className="p-3">${book.price}</td>
+                  <td className="p-3">$100</td>
                   <td className="p-3">
                     <Link
                       to={`/admin/dashboard/edit-book/${book._id}`}
@@ -51,7 +58,12 @@ const ManageBooks = () => {
                     >
                       Edit
                     </Link>
-                    <button onClick={() => handleDelete(book._id)} className='bg-red-600 px-4 py-1 font-semibold text-white rounded-sm hover:bg-sky-600'>Delete</button>
+                    <button
+                      onClick={() => handleDelete(book._id)}
+                      className='bg-red-600 px-4 py-1 font-semibold text-white rounded-sm hover:bg-sky-600'
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))
